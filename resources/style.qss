@@ -1,3 +1,6 @@
 QFrame#widget {
     background-color: #242424;
 }
+
+QLabel#profile-picture {
+}
