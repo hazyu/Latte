@@ -27,27 +27,36 @@ class SpeakerWidget(PyQt6.QtWidgets.QGraphicsView):
         self.setObjectName("speaker")
 
         self.volume = 100
+        self.lw_opacity = 1
+        self.sw_opacity = 1
 
     def keyPressEvent(self, event: QKeyEvent | None):
         if event != None:
             if event.key() == PyQt6.QtCore.Qt.Key.Key_Down:
                 if self.volume > 0:
-                    self.volume -= 5
+                    self.volume -= 10
 
-                if self.volume < 50:
-                    self.large_wave_icon.hide()
+                    if self.lw_opacity > 0:
+                        self.lw_opacity -= 0.2
 
-                if self.volume == 0:
-                    self.small_wave_icon.hide()
+                    if self.volume < 50:
+                        self.sw_opacity -= 0.2
+                    
+                    self.large_wave_icon.setOpacity(self.lw_opacity)
+                    self.small_wave_icon.setOpacity(self.sw_opacity)
+                
             elif event.key() == PyQt6.QtCore.Qt.Key.Key_Up:
                 if self.volume < 100:
-                    self.volume += 5
+                    self.volume += 10
 
-                if self.volume > 0:
-                    self.small_wave_icon.show()
+                    if self.sw_opacity < 1:
+                        self.sw_opacity += 0.2
 
-                if self.volume > 50:
-                    self.large_wave_icon.show()
+                    if self.volume > 50:
+                        self.lw_opacity += 0.2
+
+                    self.large_wave_icon.setOpacity(self.lw_opacity)
+                    self.small_wave_icon.setOpacity(self.sw_opacity)
                     
 
         
