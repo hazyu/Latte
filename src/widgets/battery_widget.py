@@ -17,7 +17,7 @@ class BatteryWidget(PyQt6.QtWidgets.QGraphicsView):
         battery_top.setPos(2.25, -6)
         self.battery_inside.setPos(3, 2.75)
 
-        
+        self.bt_inside_fh = self.battery_inside.boundingRect().height()
         self.bt_inside_tr = PyQt6.QtGui.QTransform()
 
         self.battery = psutil.sensors_battery()
@@ -41,9 +41,10 @@ class BatteryWidget(PyQt6.QtWidgets.QGraphicsView):
         self.setObjectName("battery-widget")
 
     def set_battery_height(self, scale: float):
-        self.bt_inside_tr.translate(0, self.battery_inside.boundingRect().height())
+        self.bt_inside_tr = PyQt6.QtGui.QTransform()
+        self.bt_inside_tr.translate(0, self.bt_inside_fh)
         self.bt_inside_tr.scale(1, scale)
-        self.bt_inside_tr.translate(0, -self.battery_inside.boundingRect().height())
+        self.bt_inside_tr.translate(0, -self.bt_inside_fh)
 
         self.battery_inside.setTransform(self.bt_inside_tr)
 
