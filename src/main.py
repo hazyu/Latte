@@ -4,6 +4,7 @@ import PyQt6.QtWidgets
 import app
 import sys
 import utils.resource_utils
+import utils.font_utils
 
 class Window(PyQt6.QtWidgets.QMainWindow):
     def __init__(self):
@@ -21,6 +22,8 @@ class Window(PyQt6.QtWidgets.QMainWindow):
         super().keyPressEvent(event)
 
 qt_app = PyQt6.QtWidgets.QApplication(sys.argv)
+
+utils.font_utils.load_fonts()
 
 window = Window()
 window.show()
