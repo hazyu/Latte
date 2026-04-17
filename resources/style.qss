@@ -1,6 +1,17 @@
-QFrame#widget {
+QFrame#app {
     background-color: #242424;
+    color: white;
 }
 
-QLabel#profile-picture {
+QFrame#top-row-container {
+    background-color: #363636;
+}
+
+QFrame#status-widget {
+    background-color: rgba(36, 36, 36, 0.8);
+    border-radius: 12px;
+}
+
+QGraphicsView#speaker {
+    background-color: rgba(36, 36, 36, 0);
 }

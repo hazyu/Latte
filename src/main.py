@@ -1,16 +1,32 @@
+from PyQt6.QtGui import QKeyEvent
+import PyQt6.QtCore
+import PyQt6.QtWidgets
+import app
 import sys
+import utils.resource_utils
 
-from PyQt6.QtWidgets import QApplication
-from window import Window
-from utils.resource_utils import resource_path
+class Window(PyQt6.QtWidgets.QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Latte")
+        self.setFixedSize(1280, 800)
 
-app = QApplication(sys.argv)
+        self.setCentralWidget(app.App())
+
+    def keyPressEvent(self, event): # type: ignore
+        if event.key() == PyQt6.QtCore.Qt.Key.Key_Escape:
+            self.close()
+
+        
+        super().keyPressEvent(event)
+
+qt_app = PyQt6.QtWidgets.QApplication(sys.argv)
 
 window = Window()
 window.show()
 
-with open(resource_path("style.qss"), "r") as f:
+with open(utils.resource_utils.get_resource_path("style.qss"), "r") as f:
     _style = f.read()
     window.setStyleSheet(_style)
 
-app.exec()
+qt_app.exec()
