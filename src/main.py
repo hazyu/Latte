@@ -11,6 +11,7 @@ class Window(PyQt6.QtWidgets.QMainWindow):
         super().__init__()
         self.setWindowTitle("Latte")
         self.setFixedSize(1280, 800)
+        self.setWindowFlag(PyQt6.QtCore.Qt.WindowType.FramelessWindowHint)
 
         self.setCentralWidget(app.App())
 
