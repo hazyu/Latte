@@ -15,7 +15,7 @@ class Window(PyQt6.QtWidgets.QMainWindow):
 
         self.setCentralWidget(app.App())
 
-    def keyPressEvent(self, event): # type: ignore
+    def keyPressEvent(self, event: QKeyEvent): # type: ignore
         if event.key() == PyQt6.QtCore.Qt.Key.Key_Escape:
             self.close()
 

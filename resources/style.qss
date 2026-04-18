@@ -19,3 +19,11 @@ QGraphicsView#speaker {
 QGraphicsView#battery-widget {
     background-color: rgba(0,0,0,0)
 }
+
+QFrame#middle-row-container {
+    background-color: #363636;
+}
+
+QFrame#navigation-widget {
+    background-color: #242424;
+}
