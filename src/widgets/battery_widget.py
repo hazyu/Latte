@@ -22,9 +22,7 @@ class BatteryWidget(PyQt6.QtWidgets.QGraphicsView):
 
         self.battery = psutil.sensors_battery()
         if self.battery != None:
-            self.percent = self.battery.percent
-            scale = self.percent / 100
-            self.set_battery_height(scale)
+            self.update_battery()
             
             
         self.timer = PyQt6.QtCore.QTimer(self)
@@ -49,6 +47,7 @@ class BatteryWidget(PyQt6.QtWidgets.QGraphicsView):
         self.battery_inside.setTransform(self.bt_inside_tr)
 
     def update_battery(self):
+        self.battery = psutil.sensors_battery()
         if self.battery != None:
             self.percent = self.battery.percent
             scale = self.percent / 100
